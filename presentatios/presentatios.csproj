@@ -9,20 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="VisualBasic.PowerPacks.Vs" Version="1.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="icons\" />
-    <Folder Include="vid\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj" />
-    <ProjectReference Include="..\Domina\Domian.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

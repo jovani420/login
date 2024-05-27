@@ -113,6 +113,26 @@ namespace login.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap flavio_refesh {
+            get {
+                object obj = ResourceManager.GetObject("flavio-refesh", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap flavio_save {
+            get {
+                object obj = ResourceManager.GetObject("flavio-save", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap flavio_user {
             get {
                 object obj = ResourceManager.GetObject("flavio-user", resourceCulture);
@@ -126,6 +146,36 @@ namespace login.Properties {
         internal static System.Drawing.Bitmap flavio_user_Hover {
             get {
                 object obj = ResourceManager.GetObject("flavio-user-Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap flavio_warning {
+            get {
+                object obj = ResourceManager.GetObject("flavio-warning", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconClosed {
+            get {
+                object obj = ResourceManager.GetObject("iconClosed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgLogin2 {
+            get {
+                object obj = ResourceManager.GetObject("imgLogin2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

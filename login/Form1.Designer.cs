@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             panel1 = new Panel();
-            pictureBox2 = new PictureBox();
+            imgBanner = new PictureBox();
             txtUser = new TextBox();
             txtPassword = new TextBox();
             txtGuideUser = new Label();
@@ -41,35 +41,37 @@
             btnClosed = new PictureBox();
             btnMinimize = new PictureBox();
             imgUser = new PictureBox();
-            pictureBox3 = new PictureBox();
+            imgPassword = new PictureBox();
             btnNotSee = new PictureBox();
+            lblError = new Label();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)imgBanner).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnClosed).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnMinimize).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgUser).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)imgPassword).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnNotSee).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(0, 122, 204);
-            panel1.Controls.Add(pictureBox2);
+            panel1.Controls.Add(imgBanner);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(235, 330);
             panel1.TabIndex = 0;
             // 
-            // pictureBox2
+            // imgBanner
             // 
-            pictureBox2.Image = Properties.Resources.vid_login;
-            pictureBox2.Location = new Point(0, 0);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(236, 330);
-            pictureBox2.TabIndex = 11;
-            pictureBox2.TabStop = false;
+            imgBanner.Image = Properties.Resources.vid_login;
+            imgBanner.Location = new Point(0, 0);
+            imgBanner.Name = "imgBanner";
+            imgBanner.Size = new Size(236, 330);
+            imgBanner.TabIndex = 11;
+            imgBanner.TabStop = false;
+            imgBanner.MouseDown += pictureBox2_MouseDown;
             // 
             // txtUser
             // 
@@ -81,8 +83,6 @@
             txtUser.Size = new Size(384, 25);
             txtUser.TabIndex = 1;
             txtUser.TextChanged += txtUser_TextChanged;
-            txtUser.MouseEnter += txtUser_MouseEnter;
-            txtUser.MouseLeave += txtUser_MouseLeave;
             // 
             // txtPassword
             // 
@@ -94,8 +94,6 @@
             txtPassword.Size = new Size(384, 25);
             txtPassword.TabIndex = 2;
             txtPassword.TextChanged += txtPassword_TextChanged;
-            txtPassword.MouseEnter += txtPassword_MouseEnter;
-            txtPassword.MouseLeave += txtPassword_MouseLeave;
             // 
             // txtGuideUser
             // 
@@ -124,12 +122,11 @@
             lblOpening.AutoSize = true;
             lblOpening.Font = new Font("Microsoft JhengHei", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblOpening.ForeColor = SystemColors.HighlightText;
-            lblOpening.Location = new Point(441, 22);
+            lblOpening.Location = new Point(425, 20);
             lblOpening.Name = "lblOpening";
             lblOpening.Size = new Size(139, 27);
             lblOpening.TabIndex = 5;
             lblOpening.Text = "Iniciar seción";
-            lblOpening.Click += lblOpening_Click;
             // 
             // btnAcceder
             // 
@@ -142,7 +139,7 @@
             btnAcceder.Font = new Font("Microsoft JhengHei", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAcceder.ForeColor = Color.LightGray;
             btnAcceder.Image = (Image)resources.GetObject("btnAcceder.Image");
-            btnAcceder.Location = new Point(316, 261);
+            btnAcceder.Location = new Point(316, 238);
             btnAcceder.Name = "btnAcceder";
             btnAcceder.RightToLeft = RightToLeft.No;
             btnAcceder.Size = new Size(384, 40);
@@ -151,6 +148,9 @@
             btnAcceder.TextAlign = ContentAlignment.MiddleRight;
             btnAcceder.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAcceder.UseVisualStyleBackColor = false;
+            btnAcceder.Click += btnAcceder_Click;
+            btnAcceder.Enter += btnAcceder_Enter;
+            btnAcceder.Leave += btnAcceder_Leave;
             // 
             // linkPassword
             // 
@@ -158,7 +158,7 @@
             linkPassword.AutoSize = true;
             linkPassword.Font = new Font("Microsoft JhengHei", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             linkPassword.LinkColor = Color.DimGray;
-            linkPassword.Location = new Point(316, 194);
+            linkPassword.Location = new Point(425, 295);
             linkPassword.Name = "linkPassword";
             linkPassword.Size = new Size(168, 17);
             linkPassword.TabIndex = 7;
@@ -174,7 +174,7 @@
             btnClosed.Size = new Size(40, 24);
             btnClosed.TabIndex = 8;
             btnClosed.TabStop = false;
-            btnClosed.Click += btnClosed_Click;
+            btnClosed.Click += btnClosed_Click_1;
             btnClosed.MouseEnter += btnClosed_MouseEnter;
             btnClosed.MouseLeave += btnClosed_MouseLeave;
             // 
@@ -187,6 +187,7 @@
             btnMinimize.Size = new Size(40, 24);
             btnMinimize.TabIndex = 9;
             btnMinimize.TabStop = false;
+            btnMinimize.Click += btnMinimize_Click_1;
             btnMinimize.MouseEnter += btnMinimize_MouseEnter;
             btnMinimize.MouseLeave += btnMinimize_MouseLeave;
             // 
@@ -199,14 +200,14 @@
             imgUser.TabIndex = 10;
             imgUser.TabStop = false;
             // 
-            // pictureBox3
+            // imgPassword
             // 
-            pictureBox3.Image = Properties.Resources.flavio_padlock;
-            pictureBox3.Location = new Point(278, 143);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(32, 32);
-            pictureBox3.TabIndex = 11;
-            pictureBox3.TabStop = false;
+            imgPassword.Image = (Image)resources.GetObject("imgPassword.Image");
+            imgPassword.Location = new Point(278, 143);
+            imgPassword.Name = "imgPassword";
+            imgPassword.Size = new Size(32, 32);
+            imgPassword.TabIndex = 11;
+            imgPassword.TabStop = false;
             // 
             // btnNotSee
             // 
@@ -218,7 +219,24 @@
             btnNotSee.SizeMode = PictureBoxSizeMode.CenterImage;
             btnNotSee.TabIndex = 12;
             btnNotSee.TabStop = false;
-            btnNotSee.Click += btnNotSee_Click;
+            btnNotSee.MouseEnter += btnNotSee_MouseEnter;
+            btnNotSee.MouseLeave += btnNotSee_MouseLeave;
+            // 
+            // lblError
+            // 
+            lblError.AutoSize = true;
+            lblError.Font = new Font("Microsoft JhengHei Light", 11.25F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblError.ForeColor = Color.IndianRed;
+            lblError.Image = (Image)resources.GetObject("lblError.Image");
+            lblError.ImageAlign = ContentAlignment.MiddleLeft;
+            lblError.Location = new Point(316, 187);
+            lblError.Name = "lblError";
+            lblError.Size = new Size(124, 19);
+            lblError.TabIndex = 13;
+            lblError.Text = "     Error Message";
+            lblError.TextAlign = ContentAlignment.MiddleCenter;
+            lblError.Visible = false;
+            lblError.Click += lblError_Click;
             // 
             // Form1
             // 
@@ -226,8 +244,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(15, 15, 15);
             ClientSize = new Size(780, 330);
+            Controls.Add(lblError);
             Controls.Add(btnNotSee);
-            Controls.Add(pictureBox3);
+            Controls.Add(imgPassword);
             Controls.Add(imgUser);
             Controls.Add(btnMinimize);
             Controls.Add(btnClosed);
@@ -243,13 +262,15 @@
             Name = "Form1";
             Opacity = 0.9D;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "pnlLogin";
+            Load += Form1_Load;
+            MouseDown += Form1_MouseDown;
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)imgBanner).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnClosed).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnMinimize).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgUser).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)imgPassword).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnNotSee).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -268,10 +289,11 @@
         private PictureBox btnClosed;
         private PictureBox btnMinimize;
         private PictureBox imgUser;
-        private PictureBox pictureBox2;
-        private PictureBox pictureBox3;
+        private PictureBox imgBanner;
+        private PictureBox imgPassword;
         private PictureBox pictureBox1;
         private PictureBox imgNotSee;
         private PictureBox btnNotSee;
+        private Label lblError;
     }
 }
